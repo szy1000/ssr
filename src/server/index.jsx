@@ -4,7 +4,6 @@ import { matchRoutes } from 'react-router-config'
 import Routes from "../Routes";
 
 const express = require('express')
-const cors = require('cors')
 const app = express()
 app.use(express.static('./public'))
 // app.use(cors())
