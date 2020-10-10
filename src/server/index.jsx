@@ -49,10 +49,14 @@ app.get('*', function(req, res) {
     const context = {}
     const html = render(req,store, Routes,context)
     // 处理404
-    if(context.NOT_FOUND) {
+    if(context.action === 'REPLACE') {
+      res.redirect(301,context.url)
+    } else if(context.NOT_FOUND) {
       res.status(404)
+      res.send(html)
+    } else {
+      res.send(html)
     }
-    res.send(html)
   })
 })
 
