@@ -28,12 +28,12 @@ class Home extends Component{
   }
 
   render() {
-    const {newList} = this.props
+    const {newList =[]} = this.props
     return (
       <div>
         <Header />
         {
-          newList.length > 0 && newList.map(item => <div key={item.age}>{item.name}</div>)
+          (Array.isArray(newList) && newList.length > 0) && newList.map(item => <div key={item.age}>{item.name}</div>)
         }
         <h2>hello {this.props.name}</h2>
         <button onClick={() => alert(11)}>按钮</button>

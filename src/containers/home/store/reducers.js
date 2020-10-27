@@ -8,7 +8,7 @@ export default (state =defaultState, action) => {
     case 'change_home_list':
       return {
         ...state,
-        newList: action.newList
+        newList: action.newList || []
       }
 
     default:

@@ -17,7 +17,7 @@ import Login from './containers/login/index.jsx'
 
 export default [
   {
-    path: '/',
+    path: '/home',
     component: Home,
     exact: true,
     loadData: Home.loadData,

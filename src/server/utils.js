@@ -8,7 +8,6 @@ import { Provider } from 'react-redux'
 import getStore from "../store";
 
 export const render = (req, store, routes) => {
-
   const content = renderToString((
     <Provider store={store}>
       <StaticRouter location={req.path} content={{}}>
@@ -23,7 +22,7 @@ export const render = (req, store, routes) => {
   return `
       <html>
         <head>
-          <title>hello</title>  
+          <title>hello</title>
         </head>
         <body>
           <div id="root">${content}</div>
