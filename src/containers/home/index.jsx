@@ -24,25 +24,31 @@ import { getHomeData } from './store/actions.js'
 
 class Home extends Component{
   componentDidMount() {
-    this.props.dispatch(getHomeData('ss'))
+    if(!this.props.newList) {
+      this.props.dispatch(getHomeData(false))
+    }
   }
 
   render() {
     const {newList =[]} = this.props
     return (
       <div>
+        <div>
+          <h2>hello {this.props.name}</h2>
+          <button onClick={() => alert(11)}>按钮</button>
+        </div>
         <Header />
-        {
-          (Array.isArray(newList) && newList.length > 0) && newList.map(item => <div key={item.age}>{item.name}</div>)
-        }
-        <h2>hello {this.props.name}</h2>
-        <button onClick={() => alert(11)}>按钮</button>
+        <div>
+          {
+            newList.length > 0 && newList.map(item => <div key={item.age}>{item.name}</div>)
+          }
+        </div>
       </div>
     )
   }
 }
 //服务端加载数据
-Home.loadData = (store) => store.dispatch(getHomeData('ss'))
+Home.loadData = (store) => store.dispatch(getHomeData(true))
 
 export default connect(
   state => ({ ...state.home }),

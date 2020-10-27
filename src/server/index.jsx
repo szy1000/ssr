@@ -9,7 +9,6 @@ const app = express()
 app.use(express.static('./public'))
 app.use('/api', proxy('http://47.116.66.19:8081', {
   proxyReqPathResolver: function(req) {
-    console.log('req====>',req.url)
     return  '/api'  + req.url
   }
 }));
@@ -24,22 +23,22 @@ import {render} from './utils'
 app.get('*', function(req, res) {
 
   const store = getStore()
+  console.log('store',store)
+  const matchRoutesArr = matchRoutes(Routes, req.path)
 
-  // const matchRoutesArr = matchRoutes(Routes, req.path)
-  //
-  // const promises = []
-  //
-  // matchRoutesArr.forEach((item) => {
-  //   if (item.route.loadData) {
-  //     promises.push(item.route.loadData(store))
-  //   }
-  // })
+  const promises = []
+
+  matchRoutesArr.forEach((item) => {
+    if (item.route.loadData) {
+      promises.push(item.route.loadData(store))
+    }
+  })
 
 
-  // Promise.all(promises).then(() => {
+  Promise.all(promises).then(() => {
+    res.send(render(req,store, Routes))
+  })
   // res.send(render(req,store, Routes))
-  // })
-  res.send(render(req,store, Routes))
 
 })
 
