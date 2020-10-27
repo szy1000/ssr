@@ -9,7 +9,8 @@ const app = express()
 app.use(express.static('./public'))
 app.use('/api', proxy('http://47.116.66.19:8081', {
   proxyReqPathResolver: function(req) {
-    console.log('req====>',req)
+    console.log('req====>',req.url)
+    return  '/api'  + req.url
   }
 }));
 
@@ -19,20 +20,6 @@ import React from 'react'
 import {render} from './utils'
 // import Home from './containers/home/index.jsx'
 // const content = renderToString(<Home/>)
-
-// app.get('/api/v1/getNews', function(req, res) {
-//   res.send([
-//     {
-//       name: 'ss',
-//       age: 18
-//     },
-//     {
-//       name: 'cc',
-//       age: 19
-//     }
-//   ])
-// })
-
 
 app.get('*', function(req, res) {
 

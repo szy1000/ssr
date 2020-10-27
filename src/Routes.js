@@ -25,13 +25,11 @@ export default [
   {
     path: '/about',
     component: About,
-    exact: true,
     loadData: () => {}
   },
   {
     path: '/login',
     component: Login,
-    exact: true,
     loadData: () => {}
   },
 ]
