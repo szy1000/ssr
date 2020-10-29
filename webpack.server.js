@@ -2,9 +2,11 @@
 
 //客户端 require('path')  // bundle.js
 const path = require('path')
+const {merge} = require('webpack-merge')
+const config = require('./webpack.base')
 const nodeExtensions = require('webpack-node-externals')
 
-module.exports = {
+const serverConfig = {
   target: "node",
   entry: './src/server/index.jsx',
   mode: 'development',
@@ -13,25 +15,10 @@ module.exports = {
     path: path.resolve(__dirname, 'build')
   },
   externals: [ nodeExtensions() ],
-  module: {
-    rules: [
-      {
-        test: /\.(js|x)/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['react', 'stage-0', [
-            'env', {
-              targets: {
-                browsers: ['last 2 versions']
-              }
-            }
-          ]]
-        }
-      }
-    ]
-  },
   resolve: {
     extensions:['.js','.jsx','.json'],
   }
 }
+
+
+module.exports = merge(config, serverConfig)

@@ -13,4 +13,10 @@ const getStore = () => {
   return createStore(reducer, applyMiddleware(thunk))
 }
 
-export default getStore
+// 数据的脱水
+const getClientStore = () => {
+  const defaultState = window.context.state
+  return createStore(reducer, defaultState, applyMiddleware(thunk))
+}
+
+export {getStore, getClientStore}

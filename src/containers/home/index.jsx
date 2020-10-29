@@ -24,8 +24,8 @@ import { getHomeData } from './store/actions.js'
 
 class Home extends Component{
   componentDidMount() {
-    if(!this.props.newList) {
-      this.props.dispatch(getHomeData(false))
+    if(!this.props.newList.length) {
+      this.props.dispatch(getHomeData())
     }
   }
 

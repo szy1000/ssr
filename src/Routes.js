@@ -1,9 +1,11 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
+import App from './containers/app/index.jsx'
 import Home from './containers/home/index.jsx'
 import About from './containers/about/index.jsx'
 import Login from './containers/login/index.jsx'
+import NotFound from "./containers/404/index";
 
 // export default (
 //   <div>
@@ -16,6 +18,14 @@ import Login from './containers/login/index.jsx'
 
 
 export default [
+  // {
+  //   path: '/',
+  //   component: App,
+  //   // loadData: Home.loadData,
+  //   routes: [
+  //
+  //   ]
+  // },
   {
     path: '/home',
     component: Home,
@@ -32,4 +42,8 @@ export default [
     component: Login,
     loadData: () => {}
   },
+  // {
+  //   exact: true,
+  //   component: NotFound,
+  // },
 ]

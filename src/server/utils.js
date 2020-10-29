@@ -5,15 +5,19 @@ import { StaticRouter,Route } from 'react-router-dom'
 
 // store
 import { Provider } from 'react-redux'
-import getStore from "../store";
+import Routes from "../Routes";
 
-export const render = (req, store, routes) => {
-  console.log('state', store.getState())
+export const render = (req, store, routes,context) => {
   const content = renderToString((
     <Provider store={store}>
-      <StaticRouter location={req.path} content={{}}>
+      <StaticRouter location={req.path} context={context}>
         {
-          routes.map(item => <Route key={item.path} {...item}/>)
+          routes.map(item => {
+            if(item.routes) {
+              return item.routes.map(v => <Route key={v.path} {...v}/>)
+            }
+            return <Route key={item.path} {...item}/>
+          })
         }
       </StaticRouter>
     </Provider>
@@ -28,6 +32,12 @@ export const render = (req, store, routes) => {
         <body>
           <div id="root">${content}</div>
          </body>
+        <!--  数据的注水-->
+         <script >
+            window.context =  {
+              state: ${JSON.stringify(store.getState())}
+            }
+         </script>
          <script src=${"index.js"}></script>
       </html>
     `

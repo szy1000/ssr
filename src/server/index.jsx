@@ -1,6 +1,6 @@
 // import Home from "./containers/home";
-import getStore from "../store";
 import proxy from 'express-http-proxy'
+import {getStore} from "../store";
 import { matchRoutes } from 'react-router-config'
 import Routes from "../Routes";
 
@@ -36,7 +36,17 @@ app.get('*', function(req, res) {
 
 
   Promise.all(promises).then(() => {
-    res.send(render(req,store, Routes))
+    const context = {}
+    const html = render(req,store, Routes,context)
+    // 处理404
+    if(context.action === 'REPLACE') {
+      res.redirect(301,context.url)
+    } else if(context.NOT_FOUND) {
+      res.status(404)
+      res.send(html)
+    } else {
+      res.send(html)
+    }
   })
   // res.send(render(req,store, Routes))
 

@@ -2,33 +2,19 @@
 
 //客户端 require('path')  // bundle.js
 const path = require('path')
+const {merge} = require('webpack-merge')
+const config = require('./webpack.base')
 
-module.exports = {
+const clientConfig = {
   entry: './src/client/index.jsx',
   mode: 'development',
   output: {
     filename: "index.js",
     path: path.resolve(__dirname, 'public')
   },
-  module: {
-    rules: [
-      {
-        test: /\.(js|x)/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['react', 'stage-0', [
-            'env', {
-              targets: {
-                browsers: ['last 2 versions']
-              }
-            }
-          ]]
-        }
-      }
-    ]
-  },
   resolve: {
     extensions:['.js','.jsx','.json'],
   }
 }
+
+module.exports = merge(config, clientConfig)
