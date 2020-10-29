@@ -6,7 +6,7 @@ const changeList = (list) => ({
 })
 
 
-export const getHomeData = params => (dispatch) => {
+export const getHomeData = params => (dispatch,getState, _url) => {
   let url = ''
   if(params) {
     url = 'http://47.116.66.19:8081/api/v1/getNews.json'

@@ -5,8 +5,7 @@ const Header = () => (
   <div>
     <Link to="/login">login</Link>
     <Link to="/about">about</Link>
-    <button onClick={() => alert(11)}>按钮</button>
+    {/*<button onClick={() => alert(11)}>按钮</button>*/}
   </div>
 )
-
 export default Header

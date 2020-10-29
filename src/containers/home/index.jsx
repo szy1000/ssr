@@ -37,7 +37,7 @@ class Home extends Component{
           <h2>hello {this.props.name}</h2>
           <button onClick={() => alert(11)}>按钮</button>
         </div>
-        <Header />
+        {/*<Header />*/}
         <div>
           {
             newList.length > 0 && newList.map(item => <div key={item.age}>{item.name}</div>)

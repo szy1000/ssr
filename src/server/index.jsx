@@ -2,6 +2,7 @@
 import proxy from 'express-http-proxy'
 import {getStore} from "../store";
 import { matchRoutes } from 'react-router-config'
+
 import Routes from "../Routes";
 
 const express = require('express')
@@ -23,7 +24,6 @@ import {render} from './utils'
 app.get('*', function(req, res) {
 
   const store = getStore()
-  console.log('store',store)
   const matchRoutesArr = matchRoutes(Routes, req.path)
 
   const promises = []

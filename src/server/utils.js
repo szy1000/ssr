@@ -1,6 +1,7 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter,Route } from 'react-router-dom'
+import {renderRoutes} from 'react-router-config'
 // import Routes from "../Routes";
 
 // store
@@ -12,13 +13,16 @@ export const render = (req, store, routes,context) => {
     <Provider store={store}>
       <StaticRouter location={req.path} context={context}>
         {
-          routes.map(item => {
-            if(item.routes) {
-              return item.routes.map(v => <Route key={v.path} {...v}/>)
-            }
-            return <Route key={item.path} {...item}/>
-          })
+          renderRoutes(routes)
         }
+        {/*{*/}
+        {/*  routes.map(item => {*/}
+        {/*    if(item.routes) {*/}
+        {/*      return item.routes.map(v => <Route key={v.path} {...v}/>)*/}
+        {/*    }*/}
+        {/*    return <Route key={item.path} {...item}/>*/}
+        {/*  })*/}
+        {/*}*/}
       </StaticRouter>
     </Provider>
   ))

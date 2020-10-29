@@ -10,13 +10,13 @@ const reducer = combineReducers({
   home: homeReducer
 })
 const getStore = () => {
-  return createStore(reducer, applyMiddleware(thunk))
+  return createStore(reducer, applyMiddleware(thunk.withExtraArgument('http://47.116.66.19:8081/api/v1/getNews.json')))
 }
 
 // 数据的脱水
 const getClientStore = () => {
   const defaultState = window.context.state
-  return createStore(reducer, defaultState, applyMiddleware(thunk))
+  return createStore(reducer, defaultState, applyMiddleware(thunk.withExtraArgument('')))
 }
 
 export {getStore, getClientStore}
