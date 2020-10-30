@@ -30,11 +30,16 @@ export default [
         exact: true,
         loadData: () => {}
       },
+      {
+        path: '/logout',
+        component: Login,
+        exact: true,
+        loadData: () => {}
+      },
     ]
   },
-
-  // {
-  //   exact: true,
-  //   component: NotFound,
-  // },
+  {
+    exact: true,
+    component: NotFound,
+  },
 ]
