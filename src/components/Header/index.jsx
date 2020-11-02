@@ -4,14 +4,14 @@ import {connect} from 'react-redux'
 
 const Header = (props) => (
   <div>
-    {console.log(props)}
+    {/*{console.log(props)}*/}
     <ul>
-      <li><Link to="/">home</Link></li>
+      <li><Link to="/">首页</Link></li>
       {
         props.login ? <div>
-          <li><Link to="/about">about</Link></li>
-          <li><Link to="/logout">logout</Link></li>
-        </div> : <li><Link to="/login">login</Link></li>
+          <li><Link to="/about">关于</Link></li>
+          <li><Link to="/logout">退出</Link></li>
+        </div> : <li><Link to="/login">登录</Link></li>
       }
     </ul>
   </div>
@@ -21,3 +21,5 @@ const Header = (props) => (
 export default connect((state) => ({
   login: state.header.login
 }))(Header)
+
+// export default Header

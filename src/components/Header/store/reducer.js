@@ -1,10 +1,10 @@
 const defaultState = {
-  login: false,
+  login: true,
 }
 
 export default (state =defaultState, action) => {
   switch (action.type) {
-    case 'change_home_list':
+    case 'change_header':
       return {
         ...state,
       }
