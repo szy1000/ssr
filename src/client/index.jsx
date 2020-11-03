@@ -11,7 +11,7 @@ const store =  getClientStore()
 ReactDom.hydrate(
   <Provider store={store}>
     <BrowserRouter>
-      <Redirect from="/" to="/home" />
+      {/*<Redirect exact from="/" to="/home" />*/}
       {renderRoutes(Routes)}
     </BrowserRouter>
   </Provider>,

@@ -23,7 +23,7 @@ export default [
         path: '/about',
         component: About,
         exact: true,
-        loadData: () => {}
+        loadData: About.loadData
       },
       {
         path: '/login',
@@ -39,8 +39,8 @@ export default [
       },
     ]
   },
-  {
-    exact: true,
-    component: NotFound,
-  },
+  // {
+  //   exact: true,
+  //   component: NotFound,
+  // },
 ]

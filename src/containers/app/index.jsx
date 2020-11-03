@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import Header from "../../components/Header/index.jsx";
 import {renderRoutes} from 'react-router-config'
-// import { getHomeData } from "../home/store/actions";
+import { getHeaderInfo } from "../../components/Header/store/actions";
 
 class App extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 }
 
-// App.loadData = (store) => store.dispatch(getHomeData(true))
+App.loadData = (store) => store.dispatch(getHeaderInfo(true))
 
 
 export default App

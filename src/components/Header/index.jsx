@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {loginIn,loginOut} from './store/actions'
 
 const Header = (props) => (
   <div>
@@ -10,8 +11,8 @@ const Header = (props) => (
       {
         props.login ? <div>
           <li><Link to="/about">关于</Link></li>
-          <li><Link to="/logout">退出</Link></li>
-        </div> : <li><Link to="/login">登录</Link></li>
+          <li><div onClick={() => props.dispatch(loginOut())}>退出</div></li>
+        </div> : <li><div onClick={() => props.dispatch(loginIn())}>登录</div></li>
       }
     </ul>
   </div>

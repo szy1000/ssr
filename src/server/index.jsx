@@ -34,7 +34,6 @@ app.get('*', function(req, res) {
     }
   })
 
-
   Promise.all(promises).then(() => {
     const context = {}
     const html = render(req,store, Routes,context)

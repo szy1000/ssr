@@ -1,5 +1,5 @@
 const defaultState = {
-  login: false,
+  aboutList: [],
 }
 
 export default (state =defaultState, action) => {
@@ -7,7 +7,7 @@ export default (state =defaultState, action) => {
     case 'change_header':
       return {
         ...state,
-        login:action.login
+        aboutList: action.list
       }
 
     default:
