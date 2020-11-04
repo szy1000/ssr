@@ -22,6 +22,7 @@ import {render} from './utils'
 // const content = renderToString(<Home/>)
 
 app.get('*', function(req, res) {
+  // 处理汉字异常
 
   const store = getStore()
   const matchRoutesArr = matchRoutes(Routes, req.path)
@@ -30,7 +31,11 @@ app.get('*', function(req, res) {
 
   matchRoutesArr.forEach((item) => {
     if (item.route.loadData) {
-      promises.push(item.route.loadData(store))
+      // promises.push(item.route.loadData(store))
+      const promise = new Promise((res, rej) => {
+        item.route.loadData(store).then(res).catch(res)
+      })
+      promises.push(promise)
     }
   })
 
@@ -47,6 +52,9 @@ app.get('*', function(req, res) {
       res.send(html)
     }
   })
+  //   .catch(e => {
+  //   res.end('数据异常')
+  // })
   // res.send(render(req,store, Routes))
 
 })

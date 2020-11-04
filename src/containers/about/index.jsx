@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import { getAboutListReq } from "./store/actions";
+import { Redirect } from 'react-router-dom'
 
 class About extends Component {
   render() {
+    console.log('redirect')
     return (
-      <div>
-        <h2>hello About</h2>
-      </div>
+      <Redirect from="about" to='/'/>
     )
   }
 }

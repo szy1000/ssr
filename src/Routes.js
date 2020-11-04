@@ -14,7 +14,7 @@ export default [
     loadData: App.loadData,
     routes: [
       {
-        path: '/home',
+        path: '/',
         component: Home,
         exact: true,
         loadData: Home.loadData,
@@ -37,10 +37,11 @@ export default [
         exact: true,
         loadData: () => {}
       },
+      {
+        // exact: true,
+        component: NotFound,
+      },
     ]
   },
-  // {
-  //   exact: true,
-  //   component: NotFound,
-  // },
+
 ]

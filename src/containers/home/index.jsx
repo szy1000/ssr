@@ -30,6 +30,7 @@ class Home extends Component{
 
   render() {
     const {newList =[]} = this.props
+    console.log(newList)
     return (
       <div>
         <div>
@@ -38,7 +39,7 @@ class Home extends Component{
         </div>
         <div>
           {
-            newList.length > 0 && newList.map(item => <div key={item.age}>{item.name}</div>)
+            // (Array.isArray(newList) && newList.length > 0 )&& newList.map(item => <div key={item.age}>{item.name}</div>)
           }
         </div>
       </div>
