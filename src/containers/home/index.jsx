@@ -17,9 +17,8 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-
 import { getHomeData } from './store/actions.js'
-
+import styles from './style.css'
 
 class Home extends Component{
   componentDidMount() {
@@ -30,16 +29,15 @@ class Home extends Component{
 
   render() {
     const {newList =[]} = this.props
-    console.log(newList)
     return (
-      <div>
+      <div className={styles.home}>
         <div>
           <h2>hello {this.props.name}</h2>
           <button onClick={() => alert(11)}>按钮</button>
         </div>
         <div>
           {
-            // (Array.isArray(newList) && newList.length > 0 )&& newList.map(item => <div key={item.age}>{item.name}</div>)
+             newList.length && newList.map(item => <div key={item.age}>{item.name}</div>)
           }
         </div>
       </div>

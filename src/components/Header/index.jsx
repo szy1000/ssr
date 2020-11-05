@@ -11,6 +11,7 @@ const Header = (props) => (
       {
         props.login ? <div>
           <li><Link to="/about">关于</Link></li>
+          <li><Link to="/test">测试</Link></li>
           <li><div onClick={() => props.dispatch(loginOut())}>退出</div></li>
         </div> : <li><div onClick={() => props.dispatch(loginIn())}>登录</div></li>
       }
