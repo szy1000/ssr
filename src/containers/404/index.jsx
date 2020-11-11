@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import useStyles from 'isomorphic-style-loader/useStyles'
+// import useStyles from 'isomorphic-style-loader/useStyles'
+import withStyles from 'isomorphic-style-loader/withStyles'
 import styles from './style.css'
 
 class NotFound extends React.Component {
@@ -10,7 +11,7 @@ class NotFound extends React.Component {
   }
 
   render() {
-    useStyles(styles)
+    // useStyles(styles)
     return (
       <div className={styles.test}>
         <h2>404</h2>
@@ -20,4 +21,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound
+export default withStyles(styles)(NotFound)
