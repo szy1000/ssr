@@ -22,3 +22,4 @@ class NotFound extends React.Component {
 }
 
 export default withStyles(styles)(NotFound)
+// export default NotFound
